@@ -14,11 +14,19 @@ public class Spawner : MonoBehaviour
     {
         if (_currentTimeSpawn > _interval) 
         {
+            SpawnPoint selectedSpawnpoint = _spawnpoints[Random.Range(0, _spawnpoints.Length)];
             _currentTimeSpawn = 0;
 
-            _spawnpoints[Random.Range(0, _spawnpoints.Length)].Spawn(_prefab);
+            Spawn(selectedSpawnpoint);
         }
 
         _currentTimeSpawn += Time.deltaTime;
+    }
+
+    public void Spawn(SpawnPoint spawnpoint)
+    {
+        Cube CreatedCube = Instantiate(_prefab, spawnpoint.transform);
+
+        CreatedCube.SetDirection(spawnpoint.Specified);
     }
 }
