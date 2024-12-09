@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    private Vector3 _direction;
-    private float _speed = 10;
+    [SerializeField] private int _speed;
+
+    private Transform _target;
 
     private float _lifeTime = 5;
     private float _currentLifeTime;
 
-    public void SetDirection(Vector3 direction) 
+    public void SetTarget(Transform target) 
     {
-        _direction = direction;
+        _target = target;
     }
 
     private void Move() 
     {
-        transform.Translate(_direction * _speed * Time.deltaTime, Space.World);
+        transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
     }
     
     private void Update()

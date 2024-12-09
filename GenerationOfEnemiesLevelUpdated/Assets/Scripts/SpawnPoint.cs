@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    [SerializeField] private Vector3 _specified;
+    [SerializeField] private Transform _target;
 
-    public Vector3 Specified => _specified;
-
-    private void Start()
-    {
-        _specified = _specified.normalized;
-    }
+    public Transform Target => _target;
 }

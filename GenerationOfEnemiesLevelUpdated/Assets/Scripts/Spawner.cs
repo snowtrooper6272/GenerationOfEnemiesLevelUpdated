@@ -7,7 +7,6 @@ public class Spawner : MonoBehaviour
     [SerializeField] private SpawnPoint[] _spawnpoints;
     [SerializeField] private Cube _prefab;
     [SerializeField] private float _interval;
-
     private float _currentTimeSpawn;
 
     private void Update()
@@ -27,6 +26,6 @@ public class Spawner : MonoBehaviour
     {
         Cube CreatedCube = Instantiate(_prefab, spawnpoint.transform);
 
-        CreatedCube.SetDirection(spawnpoint.Specified);
+        CreatedCube.SetTarget(spawnpoint.Target);
     }
 }
